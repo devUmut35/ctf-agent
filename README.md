@@ -1,4 +1,4 @@
-# 🧭 CTF Agent — AI Destekli CTF Skill'i
+#  CTF Agent — AI Destekli CTF Skill'i
 
 > Platform bağımsız, system prompt destekleyen agentlarda kullanılabilen CTF yardımcı skill'i.
 
