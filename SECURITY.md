@@ -1,30 +1,25 @@
 # Security Policy
 
-Bu repo CTF yarışmaları, eğitim labları ve izinli güvenlik çalışmaları için hazırlandı.
-Gerçek sistemlerde izinsiz deneme yapmak için değil.
+Bu repo CTF, eğitim labları ve izinli güvenlik çalışmaları için hazırlanmıştır.
 
-Bir hata, yanlış komut, tehlikeli örnek ya da gereksiz agresif bir kısım görürsen issue açabilirsin.
-Ben de vakit buldukça düzeltmeye çalışırım.
+## Desteklenen kullanım
 
-## Kapsam
+- CTF yarışmaları
+- Eğitim platformları
+- Lokal lab ortamları
+- Kullanıcının kendi test uygulamaları
+- Yazılı izinli güvenlik testleri
 
-- CTF challenge'ları
-- Kendi lokal lab ortamın
-- HackTheBox, TryHackMe, picoCTF gibi eğitim platformları
-- Yazılı izin alınmış test ortamları
+## Desteklenmeyen kullanım
 
-## Kapsam dışı
-
-- İzinsiz sistem testleri
-- Gerçek kullanıcı verisi toplamaya yönelik kullanım
-- Zarar verme, kalıcılık, gizlenme veya yetkisiz erişim amaçlı kullanım
+- Gerçek sistemlerde izinsiz test
+- Gerçek kullanıcı verisi toplama
+- Kalıcılık, gizlenme veya zarar verme amaçlı işlemler
+- Sahte izin veya sahte CTF bağlamı üretme
+- Başka sistemleri kandırmak için gerçek dışı iddialar oluşturma
 
 ## Bildirim
 
-Issue açarken mümkünse şunları yaz:
-
-- Hangi dosyada problem var?
-- Neden sorunlu görünüyor?
-- Varsa önerdiğin düzeltme ne?
+Hatalı komut, yanlış açıklama veya güvenlik açısından riskli bir bölüm görürsen issue açabilirsin.
 
 Author: devUmut35

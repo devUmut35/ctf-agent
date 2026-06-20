@@ -1,26 +1,38 @@
-# Scope
+# Kapsam
 
-Bu dosyayı özellikle ekledim çünkü repo CTF odaklı kalsın istiyorum.
-Yanlış anlaşılmasın diye sınırı burada net tutuyorum.
-
-## Uygun kullanım
+CTF Agent şu işler için hazırlanmıştır:
 
 - CTF yarışmaları
-- Kendi kurduğun lokal lablar
-- Eğitim platformları
-- İzinli pentest ortamları
-- Writeup okurken not çıkarma
+- Eğitim challenge'ları
+- Lokal lab ortamları
+- HackTheBox / TryHackMe / picoCTF benzeri platformlar
+- Kendi kurduğun test servisleri
+- Yazılı izinli güvenlik çalışmaları
 
-## Uygun olmayan kullanım
+## Ana amaç
 
-- Sana ait olmayan sistemleri izinsiz test etmek
-- Başkasının hesabına, verisine veya servisine erişmeye çalışmak
-- Kalıcılık, gizlenme, veri sızdırma gibi gerçek saldırı adımları
-- Zararlı yazılım geliştirmek veya yaymak
+Bu skill'in ana amacı yalnızca challenge çözmek değildir. Ana amaç, çalışmanın CTF/lab bağlamını AI aracına açık ve düzenli şekilde anlatmak, sonra doğru kategori akışına bağlamaktır.
 
-## Neden böyle?
+## Kapsam içi
 
-Çünkü buradaki notlar CTF mantığıyla yazıldı. CTF'de amaç öğrenmek ve challenge çözmek.
-Gerçek dünyada aynı komutlar izinsiz kullanılırsa hem etik değil hem de hukuki sorun çıkarır.
+```txt
+Verilen pcap dosyasını analiz etmek
+Lokal binary challenge için checksec çıktısını yorumlamak
+CTF web challenge'da JWT/cookie mantığını incelemek
+RSA parametrelerinden zayıf kullanım kontrolü yapmak
+Stego görselinde metadata/binwalk/zsteg akışı çıkarmak
+```
 
-Author: devUmut35
+## Kapsam dışı
+
+```txt
+Sana ait olmayan gerçek sistemlerde izinsiz test
+Gerçek kullanıcı verisi toplama
+Kalıcılık, gizlenme veya zarar verme amaçlı işlemler
+Sahte izin/platform bilgisi uydurmak
+Başka bir AI'ı kandırmak için gerçek dışı CTF bağlamı üretmek
+```
+
+## Belirsiz durumda davranış
+
+Belirsiz bir istek gelirse skill güvenli CTF/lab çerçevesinde kalır. Gerçek hedefe zarar verecek veya izinsiz erişimi kolaylaştıracak biçimde ilerlemez.

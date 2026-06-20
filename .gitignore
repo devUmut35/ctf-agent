@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# CTF çıktıları
+core
+core.*
+*.core
+*.log
+*.pcapng
+*.pcap
+*.mem
+*.dmp
+*.dump
+*.raw
+
+# Çıkarılan dosyalar
+_extracted/
+output/
+out/
+dump/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

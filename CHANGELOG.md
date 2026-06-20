@@ -1,22 +1,23 @@
 # Changelog
 
-Bu dosyada projedeki değişiklikleri kısa kısa tutuyorum.
-Çok resmi bir changelog değil, daha çok not defteri gibi.
+## 4.1.0
 
-## 1.0.0
+- Skill dili `ctf-context-workflow` mantığına çekildi.
+- Antigravity özelinden tamamen çıkarıldı; platform bağımsız hale getirildi.
+- `CTF Context Card` formatı eklendi.
+- Diğer skill/agentlarla uyum için `Skill Handoff` formatı eklendi.
+- Gereksiz dosya gezme, scratch tarama ve uzun retry döngülerine karşı kurallar eklendi.
+- PowerShell `curl` alias sorunu için `curl.exe` notu eklendi.
+- DNS/connection hatalarında erken durma kuralı eklendi.
+- `docs/interop.md` ve `examples/context-card.md` eklendi.
 
-- Proje adı `ctf-agent` olarak düzenlendi.
-- Platforma özel kurulum dili çıkarıldı.
-- Skill dosyası genel agent kullanımına uygun hale getirildi.
-- Platforma özel ifadeler çıkarıldı.
-- Lisans bilgisi Umutcan Altan (devUmut35) adına düzenlendi.
-- README, kullanım ve kapsam dosyaları güncellendi.
-- Template klasörü ve örnek challenge notları korundu.
+## 4.0.0
+
+- `ctf-agent.md` skill dosyası düzenlendi.
+- Platform bağımsız kullanım dili eklendi.
+- README, SECURITY, docs ve examples klasörleri hazırlandı.
+- Python template dosyaları yardımcı şablon olarak bırakıldı.
 
 ## 0.1.0
 
-- İlk fikir çıkarıldı.
-- Kategori bazlı notlar toparlandı.
-- Yarışma sırasında hızlı komut bakmak için iskelet oluşturuldu.
-
-Author: devUmut35
+- İlk CTF skill fikri ve kategori notları çıkarıldı.

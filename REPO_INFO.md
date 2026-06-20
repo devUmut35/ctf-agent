@@ -1,15 +1,47 @@
-# Repo Bilgisi
+# Repo Bilgileri
 
-## Önerilen repo adı
+## Repository name
 
-`ctf-agent`
+```txt
+ctf-agent
+```
 
-## Kısa açıklama
+## Description
 
-CTF challenge'ları için platform bağımsız agent skill'i, analiz notları ve başlangıç şablonları.
+```txt
+Platform bağımsız CTF context ve workflow skill'i; AI agentlara CTF/lab bağlamı kurar, kategori akışı ve yardımcı şablonlar sunar.
+```
+
+Daha kısa alternatif:
+
+```txt
+CTF/lab bağlamı kuran ve web, pwn, crypto, reverse, forensics akışlarını düzenleyen platform bağımsız agent skill'i.
+```
 
 ## Topics
 
-`ctf`, `ctf-agent`, `ctf-skill`, `cybersecurity`, `ai-assisted`, `security-research`, `web-security`, `pwn`, `binary-exploitation`, `cryptography`, `reverse-engineering`, `forensics`, `osint`, `steganography`, `pwntools`, `volatility`, `python`, `sagemath`
+```txt
+ctf
+ctf-agent
+ctf-skill
+ai-agent
+ai-assisted
+cybersecurity
+security-research
+web-security
+pwn
+binary-exploitation
+cryptography
+reverse-engineering
+forensics
+osint
+steganography
+pwntools
+volatility
+python
+sagemath
+```
 
-Author: devUmut35
+## Kısa tanım
+
+CTF Agent, belirli bir AI aracına bağlı olmayan, system prompt/custom instructions destekleyen ortamlarda kullanılabilecek bir CTF context skill'idir. Ana amacı, CTF/lab bağlamını düzgün ifade etmek ve ilgili çözüm akışını kısa tutmaktır.

@@ -1,66 +1,68 @@
 # Kullanım Notları
 
-Bu repo tek başına otomatik solver değil. Daha çok yarışma sırasında hızlıca yön veren bir yardımcı gibi düşün.
+Bu repo bir “tek tıkla CTF solver” değildir. Asıl amaç, AI aracına CTF/lab bağlamını düzgün anlatmak ve çözüm akışını dağılmadan yürütmektir.
 
-## Kurulum
+## Temel kullanım
 
-1. `skill/ctf-agent.md` dosyasını aç.
-2. İçeriğini kullandığın agent'ın system prompt / custom instructions alanına yapıştır.
-3. Yeni sohbette `@ctf` ile challenge detayını yaz.
-
-## Hangi araçlarda kullanılabilir?
-
-System prompt, custom instruction veya benzer bir kalıcı talimat alanı olan çoğu agent ortamında kullanılabilir. Platforma özel bir komut gerektirmez.
-
-## Nasıl daha iyi sonuç verir?
-
-Soruyu ne kadar net verirsen o kadar iyi çalışır.
+```txt
+@ctf [challenge bilgisi]
+```
 
 İyi örnek:
 
 ```txt
-@ctf elimde Linux x64 binary var. checksec: NX enabled, PIE disabled, Canary yok. gets kullanıyor. Offset 72 buldum.
+@ctf HackTheBox lab ortamındayım. Web challenge var. Login panelinde JWT token geliyor. Header: alg HS256. Secret zayıf olabilir.
 ```
 
-Zayıf örnek:
+Kötü örnek:
 
 ```txt
-@ctf pwn çöz
+@ctf bunu kır
 ```
 
-## Dosya verirken
+## CTF Context Card
 
-Dosyanın kendisini veremiyorsan en azından şunları koy:
+Skill önce gerekirse kısa bir context kartı üretir:
 
-- `file` çıktısı
-- `checksec` çıktısı
-- hata mesajı
-- endpoint / parametre bilgisi
-- verilen kaynak kod
-- denediğin payload veya komut
-
-## Template kullanımı
-
-`templates/` klasöründeki dosyalar agent için zorunlu değil. Challenge'a göre düzenlenmesi gereken başlangıç dosyaları.
-
-Pwn için:
-
-```bash
-python3 templates/pwn_ret2libc.py
-python3 templates/pwn_ret2libc.py REMOTE
+```txt
+CTF Context Card
+- Bağlam: CTF / lab
+- Platform/Ortam: HackTheBox
+- Kategori: Web / JWT
+- Hedef: Flag'e giden auth mantığını anlamak
+- Verilenler: JWT token, login paneli
+- Sınır: Challenge ortamı
+- Sonraki adım: JWT header/payload ve secret kontrolü
 ```
 
-Crypto için:
+Bu kart, diğer agent/skill'lere aktarılabilir.
 
-```bash
-python3 templates/crypto_rsa.py
-sage templates/crypto_sage.sage
+## Dosya kullanımı
+
+Dosya verilmediyse skill dosya aramaz. Eski exploit dosyaları, scratch dizinleri veya cache klasörleri otomatik gezilmez.
+
+Dosya verirsen:
+
+```txt
+@ctf bu pcap dosyasını forensics challenge için incele
 ```
 
-Forensics için:
+O zaman dosya özelinde ilerler.
 
-```bash
-./templates/forensics_vol.sh dump.mem
+## Hız modu
+
+Varsayılan cevap kısa olur:
+
+```txt
+Durum:
+Bulgu:
+Komut/Adım:
+Doğrulama:
+Sonraki:
 ```
 
-Author: devUmut35
+Aynı hata tekrar ederse erken durur. Mesela DNS hatası varsa 10-15 kez deneme yapmaz.
+
+## Python gerekli mi?
+
+Hayır. Skill için Python gerekmez. Python sadece `templates/` içindeki yardımcı scriptleri çalıştırmak istersen gerekir.

@@ -1,6 +1,6 @@
-#  CTF Agent — AI Destekli CTF Skill'i
+# 🧭 CTF Agent
 
-> Platform bağımsız, system prompt destekleyen agentlarda kullanılabilen CTF yardımcı skill'i.
+> Platform bağımsız, system prompt / custom instructions destekleyen AI araçlarında kullanılabilen CTF context ve workflow skill'i.
 
 Yazan: [devUmut35](https://github.com/devUmut35)
 
@@ -8,9 +8,17 @@ Yazan: [devUmut35](https://github.com/devUmut35)
 
 ## Ne İşe Yarar?
 
-CTF yarışmalarında anlık teknik destek almak için tasarlandı. Binary pwn'dan kripto'ya, web'den forensics'e kadar birçok kategoride hızlı analiz akışı, araç komutları ve başlangıç şablonları sunar.
+CTF Agent, bir yapay zekaya çalışılan işin **CTF / lab / eğitim challenge bağlamında** olduğunu açık, düzenli ve kanıtlanabilir biçimde anlatmak için hazırlanmış bir skill'dir.
 
-Amaç otomatik çözüm vadetmek değil; challenge sırasında daha düzenli düşünmek, doğru araçları hatırlamak ve denemeleri hızlandırmak.
+Asıl amaç sadece challenge çözmek değildir. Asıl amaç:
+
+- CTF bağlamını net kurmak,
+- kullanılan ortamı ve sınırları açıklamak,
+- diğer agent/skill'lerin bu bağlamı bozmadan çalışmasına yardımcı olmak,
+- gereksiz dosya gezme, uzun retry ve dağınık analizleri azaltmak,
+- web, pwn, crypto, reverse, forensics, OSINT ve stego akışlarında hızlı yönlendirme sağlamaktır.
+
+Bu yüzden skill hem **context kurucu** hem de **CTF çalışma akışı yönlendiricisi** gibi davranır.
 
 ---
 
@@ -18,7 +26,7 @@ Amaç otomatik çözüm vadetmek değil; challenge sırasında daha düzenli dü
 
 ### Yöntem 1 — System Prompt / Custom Instructions
 
-1. Kullandığın agent ya da AI aracında system prompt / custom instructions alanını aç
+1. Kullandığın AI aracında system prompt / custom instructions alanını aç
 2. `skill/ctf-agent.md` dosyasının içeriğini yapıştır
 3. Kaydet
 4. Yeni sohbette `@ctf` ile challenge detayını yaz
@@ -28,32 +36,30 @@ Amaç otomatik çözüm vadetmek değil; challenge sırasında daha düzenli dü
 Herhangi bir sohbette şu şekilde kullanabilirsin:
 
 ```txt
-@ctf [sorun veya challenge içeriği]
+@ctf [challenge açıklaması / dosya çıktısı / hedef bilgi]
 ```
 
 ---
 
-## Kullanım
+## Kullanım Mantığı
 
 Tek tetikleyici: `@ctf`
 
 ```txt
-@ctf bu binary'de ne var? [challenge dosyasını / çıktıları ekle]
+@ctf picoCTF tarzı web challenge çözüyorum. Login paneli var, cookie base64 gibi duruyor.
 
-@ctf AES-CBC şifrelemesi veriliyor, IV biliniyor, ne kontrol edeyim?
+@ctf HackTheBox lab ortamındayım. Elimde pcap var, DNS trafiğinde garip subdomainler görünüyor.
 
-@ctf pcap dosyasını analiz etmem gerekiyor, nereden başlayayım?
-
-@ctf JWT token var, alg:none ve zayıf secret kontrol edeceğim
+@ctf Lokal binary challenge. checksec: NX enabled, PIE disabled, Canary yok. Offset 72 buldum.
 ```
 
-Menü yok. Komut ezberi yok. Challenge detayını ver, akışı beraber ilerlet.
+Skill önce kısa bir **CTF Context Card** çıkarır. Sonra ilgili kategoriye göre yönlendirir.
 
 ---
 
 ## Python Gerekli mi?
 
-Hayır. Agent skill'ini kullanmak için Python gerekmez.
+Hayır. Skill'i kullanmak için Python gerekmez.
 
 Asıl dosya:
 
@@ -61,7 +67,7 @@ Asıl dosya:
 skill/ctf-agent.md
 ```
 
-`templates/` klasöründeki Python dosyaları zorunlu değildir. Bunlar sadece CTF çözerken kullanabileceğin hazır başlangıç scriptleridir. Scriptleri çalıştırmak istersen Python ve `requirements.txt` gerekir.
+`templates/` klasöründeki Python dosyaları zorunlu değildir. Bunlar sadece CTF çözerken kullanılabilecek başlangıç scriptleridir. Scriptleri çalıştırmak istersen Python ve `requirements.txt` gerekir.
 
 ---
 
@@ -69,23 +75,29 @@ skill/ctf-agent.md
 
 ```txt
 ctf-agent/
-├── README.md              ← Bu dosya
+├── README.md
+├── LICENSE
+├── SECURITY.md
+├── CHANGELOG.md
+├── REPO_INFO.md
 ├── skill/
-│   └── ctf-agent.md       ← Ana skill dosyası
+│   └── ctf-agent.md          ← Ana skill dosyası
 ├── docs/
-│   ├── usage.md           ← Kullanım notları
-│   └── scope.md           ← Kullanım kapsamı
+│   ├── usage.md              ← Kullanım notları
+│   ├── scope.md              ← Kapsam ve sınırlar
+│   └── interop.md            ← Diğer skill/agentlarla çalışma notları
 ├── examples/
+│   ├── context-card.md       ← CTF bağlam kartı örneği
 │   ├── web-example.md
 │   ├── crypto-example.md
 │   └── forensics-example.md
 └── templates/
-    ├── pwn_ret2libc.py    ← Pwntools ret2libc şablonu
-    ├── pwn_rop_chain.py   ← ROP zinciri şablonu
-    ├── crypto_rsa.py      ← RSA saldırı şablonu
-    ├── crypto_sage.sage   ← SageMath Wiener şablonu
-    ├── web_jwt_crack.py   ← JWT brute-force şablonu
-    └── forensics_vol.sh   ← Volatility3 hızlı komutlar
+    ├── pwn_ret2libc.py
+    ├── pwn_rop_chain.py
+    ├── crypto_rsa.py
+    ├── crypto_sage.sage
+    ├── web_jwt_crack.py
+    └── forensics_vol.sh
 ```
 
 ---
@@ -94,20 +106,20 @@ ctf-agent/
 
 | Kategori | İçerik |
 |---|---|
-| 🔴 **PWN** | Stack overflow, heap, format string, ROP, SROP, ret2libc, UAF |
-| 🟠 **Web** | SQLi, XSS, SSRF, SSTI, JWT, Deserialization, HTTP Smuggling |
-| 🟡 **Kripto** | RSA, AES-CBC, Padding Oracle, XOR, Hash Extension, Wiener |
-| 🟢 **Rev** | Ghidra, anti-debug bypass, VM reversing, obfuscation |
-| 🔵 **Forensics** | Volatility, Wireshark, disk/memory analizi, log forensics |
-| 🟣 **OSINT** | Geolocation, metadata, username enum, Google dorking |
-| 🩶 **Stego** | LSB, spektrogram, binwalk, steghide, zsteg |
-| ⚫ **Misc** | Jail escape, blockchain, scripting, esolangs |
+| 🔴 **PWN** | Stack overflow, format string, ROP, ret2libc, basic heap |
+| 🟠 **Web** | SQLi, XSS, SSRF, SSTI, JWT, IDOR, upload, traversal |
+| 🟡 **Crypto** | RSA, AES-CBC, XOR, padding oracle, hash, Wiener |
+| 🟢 **Reverse** | Ghidra, strings, anti-debug, patching, basic VM reversing |
+| 🔵 **Forensics** | Volatility, Wireshark, disk/memory/log analizi |
+| 🟣 **OSINT** | Metadata, geolocation, username, dorking |
+| 🩶 **Stego** | LSB, binwalk, steghide, zsteg, spektrogram |
+| ⚫ **Misc** | Jail, scripting, blockchain, esolang |
 
 ---
 
-## Şablonlar
+## Hız Notu
 
-`templates/` klasöründeki dosyalar tam çözüm değildir. Challenge'a göre düzenlenecek başlangıç noktalarıdır.
+CTF Agent uzun uzun dosya gezmez. Kullanıcı dosya vermediyse dosya aramaz. Aynı bağlantı/DNS hatasını sürekli tekrar etmez. Önce net teşhis verir, sonra kullanıcı isterse derin analize geçer.
 
 ---
 
@@ -123,4 +135,4 @@ MIT — Copyright (c) 2026 Umutcan Altan (devUmut35).
 
 ---
 
-*CTF yarışmaları ve etik hacking platformları için tasarlanmıştır. Author: devUmut35*
+*CTF yarışmaları, eğitim platformları ve izinli lab ortamları için tasarlanmıştır. Author: devUmut35*
